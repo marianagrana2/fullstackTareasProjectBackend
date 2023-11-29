@@ -1,6 +1,11 @@
 const mongoose = require("mongoose")
 
 const tareaSchema = mongoose.Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId, // Verifica que ese User exista en la colección. 
+        required: true,
+        ref: 'User'
+    },
     texto:{
         type: String,
         required: [true, "Por favor teclea el texto de la tarea."]
