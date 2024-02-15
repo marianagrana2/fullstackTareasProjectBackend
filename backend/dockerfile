@@ -1,1 +1,17 @@
 #Dockerfile para el backend (Express)
+#Node.js imagen oficial
+FROM node:14
+#Directorio
+WORKDIR /app
+#Copiar package.json & package-lock.json en el Directorio
+COPY package*.json ./
+#Instalar paquetes 
+RUN npm install
+#Copiar codigo fuente
+COPY . . 
+#Puerto a utilizar
+EXPOSE 5005
+#Variable de entorno 
+ENV NODE_ENV production
+#Comando a ejecutar al iniciar contenedor
+CMD ["npm", "start"]
